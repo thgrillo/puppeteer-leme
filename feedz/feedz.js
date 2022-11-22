@@ -7,8 +7,8 @@ let scrape = async () => {
   const page = await browser.newPage()
   await page.goto('https://app.feedz.com.br/inicio')
 
-  await page.type('#login_email', process.env.FEEDZ_EMAIL)
-  await page.type('#passInput', process.env.FEEDZ_PASS)
+  await page.type('#login_email', process.env.FEEDZ_EMAIL, {delay: 100})
+  await page.type('#passInput', process.env.FEEDZ_PASS, {delay: 100})
 
   await page.keyboard.press('Tab')
 
@@ -21,20 +21,8 @@ let scrape = async () => {
   await page.click('[title="Feliz"]')
   await page.waitForSelector('.fdz-panel-mood-btn-submit')
   await page.click('.fdz-panel-mood-btn-submit')
-  await page.waitForSelector('.confirm')
+  // await page.waitForSelector('.confirm')
   await page.click('.confirm')
-    
-
-    // await page.click('[title="Feliz"]')
-    // await page.keyboard.type('Thgrillo')
-    // await page.keyboard.press('Tab')
-    // await page.keyboard.press('Enter')
-    // await page.waitForNavigation()
-    // await page.evaluate(() => {
-    //     document.querySelector('#cookiedialogbackground').remove()
-    
-    // })
-    // await page.screenshot({path: 'tibia.png'});
 
 }
 scrape().then((value) => {
